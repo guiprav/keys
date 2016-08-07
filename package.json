@@ -19,5 +19,9 @@
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-preset-stage-2": "^6.13.0"
+  },
+  "dependencies": {
+    "hyperscript": "^1.4.7",
+    "hyperscript-helpers": "^3.0.0"
   }
 }
