@@ -4,5 +4,8 @@
   "scripts": {
     "build": "./build.sh",
     "start": "node dist"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }
