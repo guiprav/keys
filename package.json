@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "hyperscript": "^1.4.7",
-    "hyperscript-helpers": "^3.0.0"
+    "hyperscript-helpers": "^3.0.0",
+    "ramda": "^0.22.0"
   }
 }
