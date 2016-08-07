@@ -4,7 +4,7 @@
   "author": "Guilherme Prá Vieira (super.driver.512@gmail.com)",
   "license": "AGPL-3.0+",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "indexjs-generator src && babel src -d dist",
     "prepublish": "npm run build"
   },
   "main": "dist/index.js",
@@ -18,7 +18,8 @@
   "homepage": "https://github.com/n2liquid/node-keys#readme",
   "devDependencies": {
     "babel-cli": "^6.11.4",
-    "babel-preset-stage-2": "^6.13.0"
+    "babel-preset-stage-2": "^6.13.0",
+    "indexjs-generator": "^3.0.3"
   },
   "dependencies": {
     "hyperscript": "^1.4.7",
