@@ -1,0 +1,8 @@
+.keysAdminShell_body {
+  flex-direction: column;
+
+  height: 100vh;
+  margin: 0;
+
+  overflow: auto;
+}

@@ -1,4 +1,7 @@
 #!/bin/sh
-../node_modules/.bin/indexjs-generator src && \
-../node_modules/.bin/babel src -d dist && \
-cd .. && npm run build
+
+export PATH=../node_modules/.bin:$PATH
+
+(cd .. && npm run build) && \
+  indexjs-generator src &&  babel src -d dist && \
+  browserify dist/client.js >static/bundle.js

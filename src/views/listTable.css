@@ -1,0 +1,8 @@
+.keysListTable_dataRow:nth-child(odd) {
+  background-color: rgb(244, 245, 245);
+}
+
+.keysListTable_dataCell {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 9px 15px;
+}

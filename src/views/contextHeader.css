@@ -1,0 +1,64 @@
+.keysContextHeader {
+  border-bottom: 1px solid #eee;
+  padding: 10px 30px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+
+  background-image: linear-gradient(180deg, #efefef, #dfe1e2);
+
+  text-shadow: white 0 1px 0;
+
+  color: #5e6469;
+}
+
+.keysContextHeader_btns {
+  float: right;
+  padding-top: 18px;
+}
+
+.keysContextHeader_btn {
+  margin-left: 15px;
+}
+
+.keysContextHeader_crumbs {
+  margin: 0;
+  padding-left: 0;
+
+  list-style-type: none;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+}
+
+.keysContextHeader_crumbs + .keysContextHeader_heading {
+  margin-top: 8px;
+}
+
+.keysContextHeader_crumbItem {
+  display: inline-block;
+}
+
+.keysContextHeader_crumbItem:after {
+  content: '/';
+  margin: 0 3px;
+}
+
+.keysContextHeader_crumbLink:link,
+.keysContextHeader_crumbLink:active,
+.keysContextHeader_crumbLink:visited {
+  color: #8a949e;
+  text-decoration: none;
+}
+
+.keysContextHeader_crumbLink:hover {
+  text-decoration: underline;
+}
+
+.keysContextHeader_heading {
+  margin: 0;
+
+  font-size: 30px;
+
+  color: inherit;
+}

@@ -1,0 +1,49 @@
+.keysAlertsContainer:empty {
+  display: none;
+}
+
+.keysAlertsContainer {
+  margin-bottom: 15px;
+}
+
+.keysAlert {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 15px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  padding: 10px 15px;
+}
+
+.keysAlert--green {
+  border-color: #d6e9c6;
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+.keysAlert--blue {
+  border-color: #bce8f1;
+  background-color: #d9edf7;
+  color: #31708f;
+}
+
+.keysAlert--yellow {
+  border-color: #faebcc;
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+}
+
+.keysAlert--red {
+  border-color: #ebccd1;
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.keysAlert_dismissBtn {
+  margin-left: 10px;
+}
