@@ -24,6 +24,7 @@
   "dependencies": {
     "hyperscript": "^1.4.7",
     "hyperscript-helpers": "^3.0.0",
+    "insert-css": "^1.0.0",
     "qhell": "github:n2liquid/qhell",
     "ramda": "^0.22.0"
   }
