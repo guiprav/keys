@@ -1,18 +1,17 @@
 const insert = require('insert-css');
 
+const forEachObject = require('keys/forEachObject');
+
 const views = require('keys/views');
 
 const { stringify } = require('.');
 
-(function recurse (node) {
-  if (!node) {
+forEachObject(obj => {
+  if (!obj.styles) {
     return;
   }
 
-  if (!node.styles) {
-    Object.keys(node).forEach(k => recurse(node[k]));
-  }
-  else {
-    insert(stringify(node.styles));
-  }
-})(views);
+  insert(stringify(obj.styles));
+
+  return true;
+}, views);

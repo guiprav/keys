@@ -15,7 +15,7 @@ exports = module.exports = (type, data) => {
       Object.assign(attrs, {
         'data-href': {
           create: `/keys/create/${recordTypeName}`,
-          edit: `/keys/edit/${data.id}`,
+          edit: `/keys/edit/${recordTypeName}?id=${data.query.id}`,
         }[type],
       });
       break;
@@ -24,7 +24,7 @@ exports = module.exports = (type, data) => {
       Object.assign(attrs, {
         'data-keys-record-action': 'delete',
         'data-keys-record-type': recordTypeName,
-        'data-keys-record-id': data.id,
+        'data-keys-record-id': data.query.id,
       });
       break;
 
