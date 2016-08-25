@@ -7,53 +7,21 @@ global.logTap = R.tap(console.log);
 
 app.use(express.static(`${__dirname}/../static`));
 
-const views = require('sample/views');
+const Keys = require('keys');
 
 const ctls = require('sample/ctls');
+const views = require('sample/views');
+
+Keys.init(ctls, views);
 
 async function getHandler (req, res) {
   try {
-    const { ctlName, actionName } = req.params;
-
-    switch (actionName) {
-      case 'list':
-      case 'create':
-        if (req.params.id) {
-          res.sendStatus(404);
-          return;
-        }
-        break;
-
-      case 'view':
-      case 'edit':
-        if (!req.params.id) {
-          res.sendStatus(404);
-          return;
-        }
-        break;
-    }
-
-    const ctl = ctls[ctlName];
-    const action = ctl.actions[actionName];
-
-    // TODO: Rename {actionName / action => ctlActionName / ctlAction}.
-    Object.assign(req, {
+    res.send(await Keys.render(
+      req,
       ctls,
-
-      ctlName,
-      actionName,
-
-      ctl,
-      action,
-    });
-
-    req.data = R.mergeAll([
-      req.query,
-      req.body,
-      req.params,
-    ]);
-
-    await action.get(req, res);
+      req.params.ctlName,
+      req.params.actionName
+    ));
   }
   catch(err) {
     // TODO: Log, check for user-friendly messages, set flash?

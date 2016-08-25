@@ -4,7 +4,8 @@ const db = require('sample/db');
 
 const fieldSpecs = require('../fieldSpecs');
 
-exports.load = req => db.user.getSingle(req);
+exports.prepare = async req => 
+  req.record = await db.user.getSingle(req);
 
 exports.views = {
   heading: (req, record = req.record) => record.name,
