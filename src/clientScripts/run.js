@@ -1,8 +1,6 @@
-const $ = require('jquery');
-
 const forEachObject = require('keys/forEachObject');
 
-module.exports = views => $(() => forEachObject(obj => {
+module.exports = views => forEachObject(obj => {
   if (!obj.clientScripts) {
     return;
   }
@@ -12,4 +10,4 @@ module.exports = views => $(() => forEachObject(obj => {
   );
 
   return true;
-}, views));
+}, views);

@@ -4,7 +4,7 @@ const defaultsDeep = require('lodash/defaultsDeep');
 const express = require('express');
 const app = express();
 
-global.tapLog = R.tap(console.log);
+global.logTap = R.tap(console.log);
 
 app.use(express.static(`${__dirname}/../static`));
 
