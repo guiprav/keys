@@ -3,8 +3,10 @@ const R = require('ramda');
 module.exports = req => {
   const { ctls } = req;
 
-  const itemLabel = ctlName =>
-    ctls[ctlName].actions.list.views.mainMenuListItemLabel(req);
+  const itemLabel = ctlName => {
+    const { views } = ctls[ctlName].actions.list;
+    return (views.mainMenuListItemLabel || views.heading)(req);
+  };
 
   // TODO: Let other actions besides 'list' optionally show up on the menu.
   return Object.keys(R.omit(['default'], ctls))
