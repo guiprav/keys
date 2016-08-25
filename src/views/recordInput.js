@@ -4,23 +4,27 @@ const { input } = require('keys/hh');
 
 exports = module.exports = opt => {
   const {
-    type,
     selector,
+    type,
+    name,
+    record,
   } = opt;
 
   if (exports[type]) {
     return exports[type](opt);
   }
 
-  return input(selector, R.omit(['selector'], opt));
+  return input(selector || {}, R.omit(['selector'], opt), {
+    value: record[name],
+  });
 };
 
 exports.checkbox = opt => {
   const {
-    name,
-    record,
-    default: defaultChecked,
     selector,
+    name,
+    default: defaultChecked,
+    record,
   } = opt;
 
   const fieldValue = record[name];
@@ -31,7 +35,7 @@ exports.checkbox = opt => {
     checked = fieldValue || null;
   }
 
-  return input(selector, R.omit(['selector'], opt), {
+  return input(selector || {}, R.omit(['selector'], opt), {
     value: 1,
     checked,
   });

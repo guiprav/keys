@@ -1,8 +1,7 @@
 const { button } = require('keys/hh');
 
-const views = require('.');
-
-exports = module.exports = data => exports[data.actionName](data);
+exports = module.exports = (req, ...rest) =>
+  exports[req.actionName](req, ...rest);
 
 const saveBtn = attrs => button(
   '.keysRecordForm_actionBtn.keysRecordForm_saveBtn', 'Salvar', {
@@ -16,15 +15,15 @@ const cancelBtn = attrs => button(
   },
 );
 
-exports.edit = ({ recordTypeName, query: { id } }) => [
+exports.edit = req => [
   saveBtn(), cancelBtn({
-    'data-href': `/keys/view/${recordTypeName}?id=${id}`,
+    'data-href': `/keys/${req.ctlName}/view/${req.data.id}`,
   }),
 ];
 
-exports.create = ({ recordTypeName }) => [
+exports.create = req => [
   saveBtn(), cancelBtn({
-    'data-href': `/keys/list/${recordTypeName}`,
+    'data-href': `/keys/${req.ctlName}/list`,
   }),
 ];
 

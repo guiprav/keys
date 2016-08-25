@@ -1,25 +1,24 @@
+const Q = require('q');
+
 const { form, div } = require('keys/hh');
 
-const views = require('.');
+exports = module.exports = async (
+  req,
+  record = req.record,
+) => {
+  const { action } = req;
 
-exports = module.exports = async data => {
-  const { recordTypeAction } = data;
-
-  const detailsTable = (
-    recordTypeAction.detailsTable || views.detailsTable
-  );
-
-  const formActions = (
-    recordTypeAction.recordFormActions || views.recordFormActions
-  );
+  const [
+    content,
+    actions,
+  ] = await Q.all([
+    action.recordFormContent(req, record),
+    action.recordFormActions(req, record),
+  ]);
 
   return form('.keysRecordForm', { method: 'post' },
-    await detailsTable({
-      fields: recordTypeAction.detailsTableFields,
-      record: data.record,
-    }),
-
-    div('.keysRecordForm_actions', formActions(data)),
+    content,
+    div('.keysRecordForm_actions', actions),
   );
 };
 

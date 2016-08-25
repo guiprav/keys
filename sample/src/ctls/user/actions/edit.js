@@ -1,17 +1,17 @@
+const R = require('ramda');
+
 const db = require('sample/db');
 
 const fieldSpecs = require('../fieldSpecs');
 
-exports.load = req => db.user.getAll(req);
+exports.load = req => db.user.getSingle(req);
 
-exports.heading = () => 'Usuários';
+exports.heading = (req, record = req.record) => record.name;
 
 exports.fieldSet = req => [
-  'id',
   'name',
   'adminAccess',
   'active',
 ].map(name => {
-  const spec = fieldSpecs[name];
-  return spec.list || spec.view;
+  return fieldSpecs[name].edit;
 });

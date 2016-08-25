@@ -5,11 +5,13 @@ const views = require('sample/views');
 exports.get = async (req, res) => {
   const { actionName, action } = req;
 
-  const loadTargetProp = (
-    actionName === 'list' ? 'records' : 'record'
-  );
+  if (action.load) {
+    const loadTargetProp = (
+      actionName === 'list' ? 'records' : 'record'
+    );
 
-  req[loadTargetProp] = await action.load(req);
+    req[loadTargetProp] = await action.load(req);
+  }
 
   const page = await action.render(req);
 
@@ -24,6 +26,9 @@ Object.assign(exports, R.pick([
   'contextHeaderBtns',
   'contentWrapper',
   'content',
+  'recordForm',
+  'recordFormContent',
+  'recordFormActions',
   'listTable',
   'detailsTable',
 ], views));

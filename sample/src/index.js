@@ -16,12 +16,22 @@ async function getHandler (req, res) {
   try {
     const { ctlName, actionName } = req.params;
 
-    if (
-      (actionName === 'list' && req.params.id)
-      || (actionName !== 'list' && !req.params.id)
-    ) {
-      res.sendStatus(404);
-      return;
+    switch (actionName) {
+      case 'list':
+      case 'create':
+        if (req.params.id) {
+          res.sendStatus(404);
+          return;
+        }
+        break;
+
+      case 'view':
+      case 'edit':
+        if (!req.params.id) {
+          res.sendStatus(404);
+          return;
+        }
+        break;
     }
 
     const ctl = defaultsDeep({}, ctls[ctlName], ctls.default);
@@ -38,11 +48,11 @@ async function getHandler (req, res) {
       action,
     });
 
-    req.data = R.merge(
+    req.data = R.mergeAll([
       req.query,
       req.body,
       req.params,
-    );
+    ]);
 
     await action.get(req, res);
   }

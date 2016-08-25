@@ -1,10 +1,8 @@
 const { div, ul } = require('keys/hh');
 
-const views = require('.');
-
-exports = module.exports = data => div('.keysMainMenu',
-  views.mainMenuHeading(data),
-  views.mainMenuList(data),
+exports = module.exports = req => div('.keysMainMenu',
+  req.views.mainMenuHeading(req),
+  req.views.mainMenuList(req),
 );
 
 exports.styles = {

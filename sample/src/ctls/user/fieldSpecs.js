@@ -43,3 +43,31 @@ exports.adminAccess = {
     }),
   },
 };
+
+exports.active = {
+  view: {
+    label: () => 'Ativo?',
+    data: (req, record = {}) => views.flag(record.active),
+  },
+
+  edit: {
+    label: () => 'Ativo?',
+
+    data: (req, record = {}) => views.recordInput({
+      type: 'checkbox',
+      name: 'active',
+      record,
+    }),
+  },
+
+  create: {
+    label: () => 'Ativo?',
+
+    data: (req, record = {}) => views.recordInput({
+      type: 'checkbox',
+      name: 'active',
+      default: true,
+      record,
+    }),
+  },
+};
