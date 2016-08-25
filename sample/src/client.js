@@ -1,4 +1,7 @@
-require('./views');
+const injectCss = require('keys/css/inject');
+const runScripts = require('keys/clientScripts/run');
 
-require('keys/css/inject');
-require('keys/clientScripts/run');
+const views = require('sample/views');
+
+injectCss(views);
+runScripts(views);

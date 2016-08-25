@@ -2,5 +2,6 @@
 
 export PATH=../node_modules/.bin:$PATH
 
-indexjs-generator src &&  babel src -d dist && \
-  cd .. && npm run build
+(cd .. && npm run build) && \
+  indexjs-generator src &&  babel src -d dist && \
+  browserify dist/client.js >dist/static/bundle.js

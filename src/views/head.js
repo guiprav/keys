@@ -1,10 +1,8 @@
 const { head } = require('keys/hh');
 
-const views = require('.');
+module.exports = req => head(
+  req.views.title(req),
 
-module.exports = data => head(
-  views.title(data),
-
-  views.headStylesheets(data),
-  views.headScripts(data),
+  req.views.headStylesheets(req),
+  req.views.headScripts(req),
 );

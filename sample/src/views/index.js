@@ -1,6 +1,7 @@
-const mergeDeep = require('merge-deep');
+const defaultsDeep = require('lodash/defaultsDeep');
 
-module.exports = mergeDeep(
-  require('keys/views'),
+module.exports = defaultsDeep(
+  {},
   require('./index.generated'),
+  require('keys/views'),
 );

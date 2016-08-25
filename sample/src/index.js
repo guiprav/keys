@@ -1,8 +1,10 @@
 const R = require('ramda');
-const mergeDeep = require('merge-deep');
+const defaultsDeep = require('lodash/defaultsDeep');
 
 const express = require('express');
 const app = express();
+
+global.tapLog = R.tap(console.log);
 
 app.use(express.static(`${__dirname}/../static`));
 
@@ -22,7 +24,7 @@ async function getHandler (req, res) {
       return;
     }
 
-    const ctl = mergeDeep(ctls.default, ctls[ctlName]);
+    const ctl = defaultsDeep({}, ctls[ctlName], ctls.default);
     const action = ctl.actions[actionName];
 
     // TODO: Rename {actionName / action => ctlActionName / ctlAction}.

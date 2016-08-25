@@ -2,9 +2,7 @@ const $ = require('jquery');
 
 const forEachObject = require('keys/forEachObject');
 
-const views = require('keys/views');
-
-$(() => forEachObject(obj => {
+module.exports = views => $(() => forEachObject(obj => {
   if (!obj.clientScripts) {
     return;
   }

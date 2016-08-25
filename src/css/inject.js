@@ -2,11 +2,9 @@ const insert = require('insert-css');
 
 const forEachObject = require('keys/forEachObject');
 
-const views = require('keys/views');
-
 const { stringify } = require('.');
 
-forEachObject(obj => {
+module.exports = views => forEachObject(obj => {
   if (!obj.styles) {
     return;
   }
