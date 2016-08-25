@@ -6,7 +6,9 @@
     "start": "node dist"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "assign-deep": "^0.4.5",
+    "express": "^4.14.0",
+    "merge-deep": "^3.0.0"
   },
   "devDependencies": {
     "browserify": "^13.1.0"

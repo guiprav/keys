@@ -1,32 +1,35 @@
 const R = require('ramda');
+const Q = require('q');
 
 const { div, ol, li, a, h2 } = require('keys/hh');
 
-const views = require('.');
+exports = module.exports = async req => {
+  const { action } = req;
 
-exports = module.exports = data => {
-  const { recordTypeAction } = data;
+  const [
+    crumbItems,
+    contextHeaderBtns,
 
-  const contextHeaderBtns = (
-    recordTypeAction.contextHeaderBtns || views.contextHeaderBtns
-  );
+    heading,
+  ] = await Q.all([
+    action.crumbItems(req),
+    action.contextHeaderBtns(req),
 
-  const crumbItems = (
-    recordTypeAction.crumbItems || views.crumbItems
-  );
+    action.heading(req),
+  ]);
 
   return div('.keysContextHeader',
-    div('.keysContextHeader_btns', contextHeaderBtns(data)),
+    div('.keysContextHeader_btns', contextHeaderBtns),
 
     ol('.keysContextHeader_crumbs',
-      crumbItems(data).map(item => li('.keysContextHeader_crumbItem',
+      crumbItems.map(item => li('.keysContextHeader_crumbItem',
         a('.keysContextHeader_crumbItemLink',
           R.pick(['href'], item), item.label,
         )
       )),
     ),
 
-    h2('.keysContextHeader_heading', recordTypeAction.heading(data)),
+    h2('.keysContextHeader_heading', heading),
   );
 };
 

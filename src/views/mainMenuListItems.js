@@ -1,6 +1,6 @@
 const views = require('.');
 
-module.exports = () => {
+module.exports = req => {
   const { recordTypes } = views;
 
   const listHeading = typeName => recordTypes[typeName].list.heading();

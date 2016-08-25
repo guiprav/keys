@@ -1,9 +1,11 @@
 const { button } = require('keys/hh');
 
-exports = module.exports = (type, data) => {
-  const { recordTypeName, recordType } = data;
+exports = module.exports = async (req, type) => {
+  const { ctlName, ctl } = req;
 
-  if (!recordType[type] || recordType[type].hidden) {
+  const btnAction = ctl.actions[type];
+
+  if (!btnAction || btnAction.hidden) {
     return null;
   }
 
@@ -14,8 +16,8 @@ exports = module.exports = (type, data) => {
     case 'edit':
       Object.assign(attrs, {
         'data-href': {
-          create: `/keys/create/${recordTypeName}`,
-          edit: `/keys/edit/${recordTypeName}?id=${data.query.id}`,
+          create: `/keys/${ctlName}/create`,
+          edit: `/keys/${ctlName}/edit?id=${req.query.id}`,
         }[type],
       });
       break;
@@ -23,8 +25,8 @@ exports = module.exports = (type, data) => {
     case 'delete':
       Object.assign(attrs, {
         'data-keys-record-action': 'delete',
-        'data-keys-record-type': recordTypeName,
-        'data-keys-record-id': data.query.id,
+        'data-keys-record-type': ctlName,
+        'data-keys-record-id': req.query.id,
       });
       break;
 
@@ -33,7 +35,7 @@ exports = module.exports = (type, data) => {
   }
 
   return button('.keysContextHeader_btn',
-    attrs, recordType[type].heading(),
+    attrs, await btnAction.heading(),
   );
 };
 

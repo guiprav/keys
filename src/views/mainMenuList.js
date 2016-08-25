@@ -4,8 +4,8 @@ const { ul, li, a } = require('keys/hh');
 
 const views = require('.');
 
-exports = module.exports = data => ul('.keysMainMenu_list',
-  views.mainMenuListItems(data).map(
+exports = module.exports = req => ul('.keysMainMenu_list',
+  (req.mainMenuItems || []).map(
     item => li('.keysMainMenu_listItem',
       a('.keysMainMenu_listItemLink',
         R.pick(['href'], item), item.label,

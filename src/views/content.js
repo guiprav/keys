@@ -1,37 +1,8 @@
-const views = require('.');
+exports = module.exports = req => exports[req.actionName](req);
 
-exports = module.exports = data => exports[data.actionName](data);
+exports.list = req => req.action.listTable(req);
 
-exports.list = data => {
-  const { recordTypeAction } = data;
+exports.view = req => req.action.detailsTable(req);
 
-  const listTable = (recordTypeAction.listTable || views.listTable);
-
-  return listTable({
-    fields: recordTypeAction.listTableFields,
-    records: data.records,
-  });
-};
-
-exports.view = data => {
-  const { recordTypeAction } = data;
-
-  const detailsTable = (
-    recordTypeAction.detailsTable || views.detailsTable
-  );
-
-  return detailsTable({
-    fields: recordTypeAction.detailsTableFields,
-    record: data.record,
-  });
-};
-
-exports.edit = exports.create = data => {
-  const { recordTypeAction } = data;
-
-  const recordForm = (
-    recordTypeAction.recordForm || views.recordForm
-  );
-
-  return recordForm(data);
-};
+exports.edit =
+exports.create = req => req.action.recordForm(req);

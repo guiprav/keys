@@ -1,19 +1,19 @@
 const views = require('.');
 
-exports = module.exports = data => exports[data.actionName](data);
+exports = module.exports = req => exports[req.actionName](req);
 
-exports.list = data => ([
-  views.contextHeaderBtn('create', data),
+exports.list = req => ([
+  views.contextHeaderBtn('create', req),
 ]);
 
-exports.create = () => ([]);
+exports.create = () => [];
 
-exports.view = data => ([
-  views.contextHeaderBtn('create', data),
-  views.contextHeaderBtn('edit', data),
-  views.contextHeaderBtn('delete', data),
-]);
+exports.view = req => [
+  views.contextHeaderBtn('create', req),
+  views.contextHeaderBtn('edit', req),
+  views.contextHeaderBtn('delete', req),
+];
 
-exports.edit = data => ([
-  views.contextHeaderBtn('delete', data),
-]);
+exports.edit = req => [
+  views.contextHeaderBtn('delete', req),
+];
