@@ -1,2 +1,1 @@
-module.exports = (req, ...rest) =>
-  req.views.detailsTable(req, ...rest);
+module.exports = req => req.action.views.detailsTable(req);

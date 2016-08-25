@@ -5,6 +5,7 @@ const views = require('sample/views');
 exports.get = async (req, res) => {
   const { actionName, action } = req;
 
+  // FIXME: Call action.prepare instead.
   if (action.load) {
     const loadTargetProp = (
       actionName === 'list' ? 'records' : 'record'
@@ -13,22 +14,9 @@ exports.get = async (req, res) => {
     req[loadTargetProp] = await action.load(req);
   }
 
-  const page = await action.render(req);
+  const page = await action.views.render(req);
 
   res.send(page.outerHTML);
 };
 
-exports.render = views.adminShell;
-
-Object.assign(exports, R.pick([
-  'crumbItems',
-  'contextHeader',
-  'contextHeaderBtns',
-  'contentWrapper',
-  'content',
-  'recordForm',
-  'recordFormContent',
-  'recordFormActions',
-  'listTable',
-  'detailsTable',
-], views));
+exports.views = Object.assign({}, views);

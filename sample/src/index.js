@@ -39,8 +39,6 @@ async function getHandler (req, res) {
 
     // TODO: Rename {actionName / action => ctlActionName / ctlAction}.
     Object.assign(req, {
-      views,
-
       ctlName,
       actionName,
 

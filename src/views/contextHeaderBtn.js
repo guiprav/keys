@@ -35,7 +35,7 @@ exports = module.exports = async (req, type) => {
   }
 
   return button('.keysContextHeader_btn',
-    attrs, await btnAction.heading(),
+    attrs, await btnAction.views.heading(),
   );
 };
 

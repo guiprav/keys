@@ -1,9 +1,13 @@
 const { div, ul } = require('keys/hh');
 
-exports = module.exports = req => div('.keysMainMenu',
-  req.views.mainMenuHeading(req),
-  req.views.mainMenuList(req),
-);
+exports = module.exports = req => {
+  const { views } = req.action;
+
+  return div('.keysMainMenu',
+    views.mainMenuHeading(req),
+    views.mainMenuList(req),
+  );
+};
 
 exports.styles = {
   keysMainMenu: {

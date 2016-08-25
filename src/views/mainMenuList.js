@@ -2,8 +2,6 @@ const R = require('ramda');
 
 const { ul, li, a } = require('keys/hh');
 
-const views = require('.');
-
 exports = module.exports = req => ul('.keysMainMenu_list',
   (req.mainMenuItems || []).map(
     item => li('.keysMainMenu_listItem',

@@ -1,7 +1,7 @@
 const { div } = require('keys/hh');
 
 exports = module.exports = async req => div('.keysContentWrapper',
-  await req.action.content(req),
+  await req.action.views.content(req),
 );
 
 exports.styles = {

@@ -1,8 +1,12 @@
 const { head } = require('keys/hh');
 
-module.exports = req => head(
-  req.views.title(req),
+module.exports = req => {
+  const { views } = req.action;
 
-  req.views.headStylesheets(req),
-  req.views.headScripts(req),
-);
+  return head(
+    views.title(req),
+
+    views.headStylesheets(req),
+    views.headScripts(req),
+  );
+};

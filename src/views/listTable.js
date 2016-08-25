@@ -6,7 +6,7 @@ const { table, tr, th, td } = require('keys/hh');
 exports = module.exports = async (
   req,
   records = req.records,
-  fieldSet = req.action.fieldSet(req),
+  fieldSet = req.action.views.fieldSet(req),
 ) => {
   const headerLabels = await Q.all(fieldSet.map(
     field => field.label(req),

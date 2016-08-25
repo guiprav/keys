@@ -1,7 +1,7 @@
 const { h1 } = require('keys/hh');
 
 exports = module.exports = req => h1('.keysMainMenu_heading',
-  req.views.appTitle(req),
+  req.action.views.appTitle(req),
 );
 
 exports.styles = {

@@ -3,7 +3,7 @@ const Q = require('q');
 const { html, body } = require('keys/hh');
 
 exports = module.exports = async req => {
-  const { views, action } = req;
+  const { views } = req.action;
 
   const [
     head,
@@ -13,8 +13,8 @@ exports = module.exports = async req => {
   ] = await Q.all([
     views.head(req),
     views.mainMenu(req),
-    action.contextHeader(req),
-    action.contentWrapper(req),
+    views.contextHeader(req),
+    views.contentWrapper(req),
   ]);
 
   return html(

@@ -4,7 +4,7 @@ const Q = require('q');
 const { div, ol, li, a, h2 } = require('keys/hh');
 
 exports = module.exports = async req => {
-  const { action } = req;
+  const { views } = req.action;
 
   const [
     crumbItems,
@@ -12,10 +12,10 @@ exports = module.exports = async req => {
 
     heading,
   ] = await Q.all([
-    action.crumbItems(req),
-    action.contextHeaderBtns(req),
+    views.crumbItems(req),
+    views.contextHeaderBtns(req),
 
-    action.heading(req),
+    views.heading(req),
   ]);
 
   return div('.keysContextHeader',

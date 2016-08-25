@@ -5,7 +5,7 @@ const { table, tr, th, td } = require('keys/hh');
 exports = module.exports = async (
   req,
   record = req.record,
-  fieldSet = req.action.fieldSet(req, record),
+  fieldSet = req.action.views.fieldSet(req, record),
 ) => {
   const fieldRows = await Qh.deepWhen(fieldSet.map(field => ({
     label: field.label(req, record),

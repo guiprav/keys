@@ -6,6 +6,8 @@ const listAction = require('./list');
 
 exports.load = req => db.user.getSingle(req);
 
-exports.heading = (req, record = req.record) => record.name;
+exports.views = {
+  heading: (req, record = req.record) => record.name,
 
-exports.fieldSet = listAction.fieldSet;
+  fieldSet: listAction.views.fieldSet,
+};
