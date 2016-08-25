@@ -1,3 +1,4 @@
+const R = require('ramda');
 const mergeDeep = require('merge-deep');
 
 const express = require('express');
@@ -9,15 +10,22 @@ const views = require('sample/views');
 
 const ctls = require('sample/ctls');
 
-app.get('/keys/:ctlName/:actionName', async (req, res) => {
+async function getHandler (req, res) {
   try {
     const { ctlName, actionName } = req.params;
 
-    //console.log(ctls.default.actions[actionName]);
+    if (
+      (actionName === 'list' && req.params.id)
+      || (actionName !== 'list' && !req.params.id)
+    ) {
+      res.sendStatus(404);
+      return;
+    }
 
     const ctl = mergeDeep(ctls.default, ctls[ctlName]);
     const action = ctl.actions[actionName];
 
+    // TODO: Rename {actionName / action => ctlActionName / ctlAction}.
     Object.assign(req, {
       views,
 
@@ -28,13 +36,22 @@ app.get('/keys/:ctlName/:actionName', async (req, res) => {
       action,
     });
 
+    req.data = R.merge(
+      req.query,
+      req.body,
+      req.params,
+    );
+
     await action.get(req, res);
   }
   catch(err) {
     // TODO: Log, check for user-friendly messages, set flash?
     console.error(err);
-    res.status(500).send();
+    res.sendStatus(500);
   }
-});
+}
+
+app.get('/keys/:ctlName/:actionName', getHandler);
+app.get('/keys/:ctlName/:actionName/:id', getHandler);
 
 app.listen(process.env.PORT || 3000);

@@ -1,10 +1,10 @@
 const db = require('sample/db');
 
+const fieldSpecs = require('../fieldSpecs');
+
 exports.load = req => db.user.getAll(req);
 
 exports.heading = () => 'Usuários';
-
-const fieldSpecs = require('../fieldSpecs');
 
 exports.fieldSet = req => [
   'id',

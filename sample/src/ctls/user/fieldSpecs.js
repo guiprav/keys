@@ -5,7 +5,7 @@ exports.id = {
     label: () => 'ID',
 
     data: (req, record = {}) => views.linkTo(
-      `/view/User/${record.id}`, record.id,
+      `/keys/user/view/${record.id}`, record.id,
     ),
   },
 };

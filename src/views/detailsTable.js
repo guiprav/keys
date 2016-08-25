@@ -2,12 +2,14 @@ const Qh = require('qhell');
 
 const { table, tr, th, td } = require('keys/hh');
 
-exports = module.exports = async data => {
-  const { fields, record } = data;
-
-  const fieldRows = await Qh.deepWhen(fields.map(field => ({
-    label: field.label(record),
-    ctrls: field.render(record),
+exports = module.exports = async (
+  req,
+  record = req.record,
+  fieldSet = req.action.fieldSet(req, record),
+) => {
+  const fieldRows = await Qh.deepWhen(fieldSet.map(field => ({
+    label: field.label(req, record),
+    data: field.data(req, record),
   })));
 
   return table('.keysTable.keysDetailsTable',
@@ -19,7 +21,7 @@ exports = module.exports = async data => {
 
     fieldRows.map(row => tr('.keysDetailsTable_dataRow',
       th('.keysDetailsTable_dataHeader', row.label),
-      td('.keysDetailsTable_dataCell', row.ctrls),
+      td('.keysDetailsTable_dataCell', row.data),
     )),
   );
 };
