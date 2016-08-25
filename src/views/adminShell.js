@@ -32,8 +32,10 @@ exports.styles = {
   keysShell_body: {
     flexDirection: 'column',
 
-    minHeight: '100vh',
+    height: '100vh',
     margin: 0,
+
+    overflow: 'auto',
 
     fontFamily: ['Helvetica', 'sans-serif'],
     fontSize: '11px',
