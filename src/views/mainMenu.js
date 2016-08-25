@@ -1,11 +1,21 @@
+const Q = require('q');
+
 const { div, ul } = require('keys/hh');
 
-exports = module.exports = req => {
+exports = module.exports = async req => {
   const { views } = req.action;
 
-  return div('.keysMainMenu',
+  const [
+    mainMenuHeading,
+    mainMenuList,
+  ] = await Q.all([
     views.mainMenuHeading(req),
     views.mainMenuList(req),
+  ]);
+
+  return div('.keysMainMenu',
+    mainMenuHeading,
+    mainMenuList,
   );
 };
 

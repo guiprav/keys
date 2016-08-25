@@ -1,5 +1,4 @@
 const R = require('ramda');
-const defaultsDeep = require('lodash/defaultsDeep');
 
 const express = require('express');
 const app = express();
@@ -34,11 +33,13 @@ async function getHandler (req, res) {
         break;
     }
 
-    const ctl = defaultsDeep({}, ctls[ctlName], ctls.default);
+    const ctl = ctls[ctlName];
     const action = ctl.actions[actionName];
 
     // TODO: Rename {actionName / action => ctlActionName / ctlAction}.
     Object.assign(req, {
+      ctls,
+
       ctlName,
       actionName,
 

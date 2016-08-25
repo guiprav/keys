@@ -1,25 +1,27 @@
-const views = require('.');
+const R = require('ramda');
 
 module.exports = req => {
-  const { recordTypes } = views;
+  const { ctls } = req;
 
-  const listHeading = typeName => recordTypes[typeName].list.heading();
+  const itemLabel = ctlName =>
+    ctls[ctlName].actions.list.views.mainMenuListItemLabel(req);
 
-  return Object.keys(recordTypes)
+  // TODO: Let other actions besides 'list' optionally show up on the menu.
+  return Object.keys(R.omit(['default'], ctls))
     .filter(k => {
-      const listAction = recordTypes[k].list;
-      return listAction && !listAction.hidden;
+      const listAction = ctls[k].actions.list;
+      return listAction && listAction.showOnMainMenu !== false;
     })
     .sort((kA, kB) => {
-      const a = listHeading(kA);
-      const b = listHeading(kB);
+      const a = itemLabel(kA);
+      const b = itemLabel(kB);
 
       if(a < b) { return -1; }
       else if(a > b) { return 1; }
       else { return 0 };
     })
     .map(k => ({
-      label: listHeading(k),
-      href: `/keys/list/${k}`,
+      label: itemLabel(k),
+      href: `/keys/${k}/list`,
     }));
 };
