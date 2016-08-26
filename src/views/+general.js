@@ -1,3 +1,5 @@
+/*global location*/
+
 const $ = require('jquery');
 
 const Keys = require('keys/client');
