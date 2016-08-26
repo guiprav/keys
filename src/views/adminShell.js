@@ -21,7 +21,7 @@ module.exports = async req => {
     head,
     mainMenu,
 
-    body('.keysAdminShell_body',
+    body('.keysShell_body.keysAdminShell_body',
       contextHeader,
       contentWrapper,
     ),

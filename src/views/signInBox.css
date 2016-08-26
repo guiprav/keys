@@ -1,0 +1,10 @@
+.keysSignInBox {
+  width: 300px;
+}
+
+.keysSignInBox_loginInput,
+.keysSignInBox_passwordInput,
+.keysSignInBox_loginBtn {
+  width: 100%;
+  margin-top: 2px;
+}

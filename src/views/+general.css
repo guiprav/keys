@@ -53,3 +53,10 @@ a:visited {
 .keysTableHeader:last-child {
   border-right: 1px solid #cdcdcd;
 }
+
+/* --- */
+
+.keysShell_body {
+  font-family: Helvetica, sans-serif;
+  font-size: 11px;
+}
