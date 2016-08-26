@@ -43,7 +43,8 @@ exports.edit = {
   prepare: exports.view.prepare,
 
   views: {
-    heading: exports.view.views.heading,
+    heading: (req, record = req.record) =>
+      record.name || 'Editar grupo',
 
     fieldSet: req => [
       'name',
@@ -66,5 +67,11 @@ exports.create = {
       const spec = fieldSpecs[name];
       return spec.create || spec.edit;
     }),
+  },
+};
+
+exports.delete = {
+  views: {
+    heading: () => 'Deletar grupo',
   },
 };
