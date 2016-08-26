@@ -1,3 +1,5 @@
+const localReferrerOr = require('keys/localReferrerOr');
+
 const { button } = require('keys/hh');
 
 module.exports = (req, ...rest) =>
@@ -17,19 +19,16 @@ const cancelBtn = attrs => button(
 
 exports.edit = req => [
   saveBtn(), cancelBtn({
-    'data-href': `/keys/${req.ctlName}/view/${req.data.id}`,
+    'data-keys-href': localReferrerOr(
+      req, `/keys/${req.ctlName}/view/${req.data.id}`,
+    ),
   }),
 ];
 
 exports.create = req => [
   saveBtn(), cancelBtn({
-    'data-href': `/keys/${req.ctlName}/list`,
+    'data-keys-href': localReferrerOr(
+      req, `/keys/${req.ctlName}/list`,
+    ),
   }),
 ];
-
-exports.styles = {
-  btn: {
-    select: '.keysRecordForm_actionBtn',
-    marginRight: '15px',
-  },
-};

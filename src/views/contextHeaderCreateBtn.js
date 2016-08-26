@@ -7,7 +7,7 @@ module.exports = data => {
 
   return button('.keysContextHeader_btn',
     recordType.create.heading(), {
-      'data-href': `/keys/create/${recordTypeName}`,
+      'data-keys-href': `/keys/create/${recordTypeName}`,
     },
   );
 };
