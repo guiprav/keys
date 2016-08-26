@@ -1,3 +1,5 @@
 const { title } = require('keys/hh');
 
-module.exports = () => title('Admin panel - Keys');
+module.exports = req => title(
+  `${req.action.views.heading(req)} - ${req.action.views.appTitle(req)}`
+);
