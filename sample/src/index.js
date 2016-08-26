@@ -20,12 +20,7 @@ const ctls = require('sample/ctls');
         return;
       }
 
-      res.send(await Keys.render(
-        req,
-        ctls,
-        ctlName,
-        actionName
-      ));
+      res.send(await Keys.render(req, ctls, ctlName, actionName));
     }
     catch(err) {
       // TODO: Log, check for user-friendly messages, set flash?
@@ -44,13 +39,6 @@ const ctls = require('sample/ctls');
       const { ctlName, actionName } = req.params;
 
       if (!Keys.ctlActionExists(ctls, ctlName, actionName)) {
-        res.sendStatus(404);
-        return;
-      }
-
-      const action = ctls[ctlName].actions[actionName];
-
-      if (!action.submit) {
         res.sendStatus(404);
         return;
       }

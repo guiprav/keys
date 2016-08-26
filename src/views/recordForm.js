@@ -16,7 +16,7 @@ module.exports = async (
     views.recordFormActions(req, record),
   ]);
 
-  return form('.keysRecordForm', { method: 'post' },
+  return form('.keysAjaxForm.keysRecordForm', { method: 'post' },
     content,
     div('.keysRecordForm_actions', actions),
   );

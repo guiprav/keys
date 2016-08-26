@@ -1,24 +1,9 @@
-const R = require('ramda');
+const initReq = require('./initReq');
 
 module.exports = async (req, ctls, ctlName, actionName) => {
-  const ctl = ctls[ctlName];
-  const action = ctl.actions[actionName];
+  initReq(req, ctls, ctlName, actionName);
 
-  Object.assign(req, {
-    ctls,
-
-    ctlName,
-    actionName,
-
-    ctl,
-    action,
-
-    data: R.mergeAll([
-      req.query,
-      req.body,
-      req.params,
-    ]),
-  });
+  const { action } = req;
 
   if (action.prepare) {
     await action.prepare(req);

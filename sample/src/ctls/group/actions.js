@@ -54,6 +54,8 @@ exports.edit = {
       return spec.edit;
     }),
   },
+
+  submit: () => console.log('edit'),
 };
 
 exports.create = {
@@ -68,10 +70,14 @@ exports.create = {
       return spec.create || spec.edit;
     }),
   },
+
+  submit: () => console.log('create'),
 };
 
 exports.delete = {
   views: {
     heading: () => 'Deletar grupo',
   },
+
+  submit: (req, res) => console.log('delete'),
 };
