@@ -8,13 +8,19 @@ module.exports = async req => {
   const [
     mainMenuHeading,
     mainMenuList,
+    mainMenuDetails,
   ] = await Q.all([
     views.mainMenuHeading(req),
     views.mainMenuList(req),
+    views.mainMenuDetails(req),
   ]);
 
   return div('.keysMainMenu',
     mainMenuHeading,
-    mainMenuList,
+
+    div('.keysMainMenu_sections',
+      mainMenuList,
+      mainMenuDetails,
+    ),
   );
 };

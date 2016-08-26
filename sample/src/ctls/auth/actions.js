@@ -10,3 +10,9 @@ exports.signIn = {
     redirect: '/keys/user/list',
   }),
 };
+
+exports.signOut = {
+  submit: (req, res) => res.send({
+    redirect: '/keys/auth/signIn',
+  }),
+};
