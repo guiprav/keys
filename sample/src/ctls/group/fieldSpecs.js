@@ -54,3 +54,10 @@ exports.active = {
     }),
   },
 };
+
+exports.actions = {
+  list: {
+    data: (req, record = req.record) => 
+      req.action.views.stdListActions(req, record, 'group'),
+  },
+};

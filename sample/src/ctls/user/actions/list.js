@@ -9,10 +9,10 @@ exports.views = {
   heading: () => 'Usuários',
 
   fieldSet: req => [
-    'id',
     'name',
     'adminAccess',
     'active',
+    'actions',
   ].map(name => {
     const spec = fieldSpecs[name];
     return spec.list || spec.view;

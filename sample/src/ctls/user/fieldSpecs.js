@@ -1,3 +1,5 @@
+const { button } = require('keys/hh');
+
 const views = require('sample/views');
 
 exports.id = {
@@ -69,5 +71,12 @@ exports.active = {
       default: true,
       record,
     }),
+  },
+};
+
+exports.actions = {
+  list: {
+    data: (req, record = req.record) => 
+      req.action.views.stdListActions(req, record, 'user'),
   },
 };

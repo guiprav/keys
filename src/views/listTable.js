@@ -9,7 +9,7 @@ exports = module.exports = async (
   fieldSet = req.action.views.fieldSet(req),
 ) => {
   const headerLabels = await Q.all(fieldSet.map(
-    field => field.label(req),
+    field => field.label && field.label(req),
   ));
 
   const recordRows = await Qh.deepWhen(
