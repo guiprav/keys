@@ -1,7 +1,1 @@
-const defaultsDeep = require('lodash/defaultsDeep');
-
-module.exports = defaultsDeep(
-  {},
-  require('./index.generated'),
-  require('keys/views'),
-);
+Object.assign(exports, require('./index.generated'));
