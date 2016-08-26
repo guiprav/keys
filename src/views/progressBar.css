@@ -1,0 +1,18 @@
+.keysProgress {
+  display: none;
+
+  width: 150px;
+
+  margin: 0 10px;
+
+  background-color: lightgrey;
+}
+
+.keysProgress_bar {
+  width: 0;
+  height: 10px;
+
+  background-color: rebeccapurple;
+
+  transition: width linear 0.1s;
+}

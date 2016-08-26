@@ -1,4 +1,4 @@
-const { button } = require('keys/hh');
+const { button } = require('keys/dist/hh');
 
 module.exports = async (req, type) => {
   const { ctlName, ctl } = req;

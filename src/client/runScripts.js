@@ -1,4 +1,4 @@
-const forEachObject = require('keys/forEachObject');
+const forEachObject = require('keys/dist/forEachObject');
 
 module.exports = views => forEachObject(obj => {
   if (!obj.clientScripts) {

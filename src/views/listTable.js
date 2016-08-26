@@ -1,13 +1,17 @@
 const Q = require('q');
 const Qh = require('qhell');
 
-const { table, tr, th, td } = require('keys/hh');
+const { p, table, tr, th, td } = require('keys/dist/hh');
 
 module.exports = async (
   req,
   records = req.records,
   fieldSet = req.action.views.fieldSet(req),
 ) => {
+  if (!records.length) {
+    return p('Sem registros.');
+  }
+
   const headerLabels = await Q.all(fieldSet.map(
     field => field.label && field.label(req),
   ));

@@ -1,3 +1,3 @@
-const { script } = require('keys/hh');
+const { script } = require('keys/dist/hh');
 
 module.exports = (src, ...rest) => script(...rest, { src });

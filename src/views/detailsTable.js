@@ -1,6 +1,6 @@
 const Qh = require('qhell');
 
-const { table, tr, th, td } = require('keys/hh');
+const { table, tr, th, td } = require('keys/dist/hh');
 
 module.exports = async (
   req,

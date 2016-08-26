@@ -1,6 +1,6 @@
 const Q = require('q');
 
-const { form, div } = require('keys/hh');
+const { form, div } = require('keys/dist/hh');
 
 module.exports = async (
   req,

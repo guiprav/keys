@@ -1,6 +1,6 @@
-const localReferrerOr = require('keys/localReferrerOr');
+const localReferrerOr = require('keys/dist/localReferrerOr');
 
-const { button } = require('keys/hh');
+const { button } = require('keys/dist/hh');
 
 module.exports = (req, ...rest) =>
   exports[req.actionName](req, ...rest);

@@ -1,42 +1,24 @@
 const R = require('ramda');
 
-const { input } = require('keys/hh');
-
-exports = module.exports = opt => {
+exports = module.exports = (req, opt) => {
   const {
-    selector,
     type,
     name,
     record,
   } = opt;
 
   if (exports[type]) {
-    return exports[type](opt);
+    return exports[type](req, opt);
   }
 
-  return input(selector || {}, R.omit(['selector'], opt), {
+  return req.action.views.input(req, {
+    ...R.omit(['record'], opt),
     value: record[name],
   });
 };
 
-exports.checkbox = opt => {
-  const {
-    selector,
-    name,
-    default: defaultChecked,
-    record,
-  } = opt;
-
-  const fieldValue = record[name];
-
-  let checked = defaultChecked;
-
-  if (fieldValue !== undefined) {
-    checked = fieldValue || null;
-  }
-
-  return input(selector || {}, R.omit(['selector'], opt), {
-    value: 1,
-    checked,
-  });
-};
+exports.checkbox = (req, opt) => req.action.views.input(req, {
+  ...R.omit(['record'], opt),
+  value: opt.record[opt.name] || null,
+  checked: opt.record[opt.name],
+});

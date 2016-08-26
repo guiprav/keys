@@ -4,8 +4,10 @@
   "author": "Guilherme Prá Vieira (super.driver.512@gmail.com)",
   "license": "AGPL-3.0+",
   "scripts": {
+    "lint": "eslint src",
+    "clean": "rm -rf dist/*",
     "build": "./build.sh",
-    "prepublish": "npm run build"
+    "postinstall": "npm run build"
   },
   "main": "dist/index.js",
   "repository": {
@@ -31,6 +33,7 @@
     "hyperscript": "^1.4.7",
     "hyperscript-helpers": "^3.0.0",
     "jquery": "^3.1.0",
+    "moment": "^2.14.1",
     "qhell": "github:n2liquid/qhell",
     "ramda": "^0.22.0"
   }

@@ -1,4 +1,4 @@
-const { form, input, button } = require('keys/hh');
+const { form, input, button } = require('keys/dist/hh');
 
 module.exports = () => form('.keysAjaxForm.keysSignInBox',
   { method: 'post' },

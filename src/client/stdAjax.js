@@ -2,7 +2,7 @@
 
 const $ = require('jquery');
 
-const Keys = require('keys/client');
+const Keys = require('keys/dist/client');
 
 module.exports = opt => $.ajax(Object.assign(
   {}, opt, {

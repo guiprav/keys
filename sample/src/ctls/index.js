@@ -1,4 +1,4 @@
-const initCtls = require('keys/initCtls');
+const initCtls = require('keys/dist/initCtls');
 
 const views = require('sample/views');
 

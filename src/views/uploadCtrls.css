@@ -1,0 +1,3 @@
+.keysUploadCtrls[data-status="uploading"] .keysProgress {
+  display: inline-block;
+}

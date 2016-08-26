@@ -1,4 +1,4 @@
-const Keys = require('keys/client');
+const Keys = require('keys/dist/client');
 
 module.exports = () => {
   Keys.pushAlert(

@@ -1,7 +1,7 @@
 const R = require('ramda');
 const Q = require('q');
 
-const { div, ol, li, a, h2 } = require('keys/hh');
+const { div, ol, li, a, h2 } = require('keys/dist/hh');
 
 module.exports = async req => {
   const { views } = req.action;

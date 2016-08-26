@@ -1,12 +1,10 @@
-const { button } = require('keys/hh');
-
-const views = require('sample/views');
+const { button } = require('keys/dist/hh');
 
 exports.id = {
   view: {
     label: () => 'ID',
 
-    data: (req, record = {}) => views.linkTo(
+    data: (req, record = {}) => req.action.views.linkTo(
       `/keys/user/view/${record.id}`, record.id,
     ),
   },
@@ -21,7 +19,7 @@ exports.name = {
   edit: {
     label: () => 'Nome',
 
-    data: (req, record = {}) => views.recordInput({
+    data: (req, record = {}) => req.action.views.recordInput({
       type: 'text',
       name: 'name',
       record,
@@ -32,13 +30,15 @@ exports.name = {
 exports.adminAccess = {
   view: {
     label: () => 'Administrador?',
-    data: (req, record = {}) => views.flag(record.adminAccess),
+
+    data: (req, record = {}) =>
+      req.action.views.flag(record.adminAccess),
   },
 
   edit: {
     label: () => 'Administrador?',
 
-    data: (req, record = {}) => views.recordInput({
+    data: (req, record = {}) => req.action.views.recordInput({
       type: 'checkbox',
       name: 'adminAccess',
       record,
@@ -49,13 +49,13 @@ exports.adminAccess = {
 exports.active = {
   view: {
     label: () => 'Ativo?',
-    data: (req, record = {}) => views.flag(record.active),
+    data: (req, record = {}) => req.action.views.flag(record.active),
   },
 
   edit: {
     label: () => 'Ativo?',
 
-    data: (req, record = {}) => views.recordInput({
+    data: (req, record = {}) => req.action.views.recordInput({
       type: 'checkbox',
       name: 'active',
       record,
@@ -65,7 +65,7 @@ exports.active = {
   create: {
     label: () => 'Ativo?',
 
-    data: (req, record = {}) => views.recordInput({
+    data: (req, record = {}) => req.action.views.recordInput({
       type: 'checkbox',
       name: 'active',
       default: true,

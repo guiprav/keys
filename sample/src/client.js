@@ -1,6 +1,6 @@
 const $ = require('jquery');
 
-const runScripts = require('keys/client/runScripts');
+const runScripts = require('keys/dist/client/runScripts');
 
 const views = require('sample/views');
 

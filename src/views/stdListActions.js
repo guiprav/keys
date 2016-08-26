@@ -1,4 +1,4 @@
-const { button, span } = require('keys/hh');
+const { button, span } = require('keys/dist/hh');
 
 module.exports = (req, record, ctlName) => {
   const { actions } = req.ctls[ctlName];

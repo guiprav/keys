@@ -1,6 +1,6 @@
 const R = require('ramda');
 
-const { ul, li, a } = require('keys/hh');
+const { ul, li, a } = require('keys/dist/hh');
 
 module.exports = async req => {
   const listItems = await req.action.views.mainMenuListItems(req);

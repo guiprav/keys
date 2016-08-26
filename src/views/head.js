@@ -1,4 +1,4 @@
-const { head } = require('keys/hh');
+const { head } = require('keys/dist/hh');
 
 module.exports = req => {
   const { views } = req.action;

@@ -3,7 +3,13 @@ const initReq = require('./initReq');
 module.exports = async (req, res, ctls, ctlName, actionName) => {
   initReq(req, ctls, ctlName, actionName);
 
-  const result = await req.action.submit(req, res);
+  const { action } = req;
+
+  if (action.prepare) {
+    await action.prepare(req);
+  }
+
+  const result = await action.submit(req, res);
 
   if (!res.headersSent) {
     switch (actionName) {
