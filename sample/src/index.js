@@ -1,3 +1,5 @@
+global.logTap = require('ramda').tap(console.log);
+
 const express = require('express');
 const app = express();
 

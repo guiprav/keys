@@ -35,8 +35,13 @@
   margin-top: 8px;
 }
 
-.keysContextHeader_crumbItem:last-child:after {
-  content: ' /';
+.keysContextHeader_crumbItem {
+  display: inline-block;
+}
+
+.keysContextHeader_crumbItem:after {
+  content: '/';
+  margin: 0 3px;
 }
 
 .keysContextHeader_crumbLink:link,
