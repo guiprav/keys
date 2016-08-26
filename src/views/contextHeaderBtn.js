@@ -9,7 +9,7 @@ module.exports = async (req, type) => {
     return;
   }
 
-  let attrs = {};
+  const attrs = {};
 
   switch (type) {
     case 'create':

@@ -1,4 +1,4 @@
-/*global location*/
+/* global location */
 
 const $ = require('jquery');
 
