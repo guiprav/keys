@@ -1,4 +1,5 @@
 /* global location */
+/* global confirm */
 
 const $ = require('jquery');
 

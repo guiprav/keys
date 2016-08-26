@@ -13,5 +13,5 @@ module.exports = (fn, root) => {
     if (!fn(obj)) {
       Object.keys(obj).forEach(k => recurse(obj[k]));
     }
-  })(root);
+  }(root));
 };

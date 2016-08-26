@@ -13,7 +13,7 @@ module.exports = opt => $.ajax(Object.assign(
     success: data => {
       const { redirect } = opt;
 
-      switch (opt.redirect || 'follow') {
+      switch (redirect || 'follow') {
         case 'ignore':
           break;
 

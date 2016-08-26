@@ -5,7 +5,6 @@ module.exports = (req, href) => {
   if (referrer && referrer.includes(`://${req.hostname}`)) {
     return referrer;
   }
-  else {
-    return href;
-  }
+
+  return href;
 };

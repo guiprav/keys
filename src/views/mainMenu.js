@@ -1,6 +1,6 @@
 const Q = require('q');
 
-const { div, ul } = require('keys/hh');
+const { div } = require('keys/hh');
 
 module.exports = async req => {
   const { views } = req.action;

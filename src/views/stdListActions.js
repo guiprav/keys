@@ -25,7 +25,7 @@ module.exports = (req, record, ctlName) => {
       const action = actions[actionName];
 
       if (!action) {
-        return;
+        return null;
       }
 
       const customBtn = action.views.listBtn || action.views.btn;

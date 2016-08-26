@@ -6,7 +6,7 @@ module.exports = async (req, type) => {
   const btnAction = ctl.actions[type];
 
   if (!btnAction || btnAction.hidden) {
-    return;
+    return null;
   }
 
   const attrs = {};
