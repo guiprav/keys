@@ -1,0 +1,27 @@
+.keysDetailsTable {
+  background-color: #f4f4f4;
+}
+
+.keysDetailsTable_dataHeader,
+.keysDetailsTable_dataCell {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 9px 15px;
+}
+
+.keysDetailsTable_dataHeader {
+  width: 150px;
+
+  border-left: 1px solid #e8e8e8;
+
+  text-align: left;
+
+  font-weight: inherit;
+  text-transform: uppercase;
+
+  color: #5e6469;
+  text-shadow: white 0 1px 0;
+}
+
+.keysDetailsTable_dataCell {
+  border-right: 1px solid #e8e8e8;
+}

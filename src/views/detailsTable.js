@@ -2,7 +2,7 @@ const Qh = require('qhell');
 
 const { table, tr, th, td } = require('keys/hh');
 
-exports = module.exports = async (
+module.exports = async (
   req,
   record = req.record,
   fieldSet = req.action.views.fieldSet(req, record),
@@ -24,42 +24,4 @@ exports = module.exports = async (
       td('.keysDetailsTable_dataCell', row.data),
     )),
   );
-};
-
-exports.styles = {
-  table: {
-    select: '.keysDetailsTable',
-    backgroundColor: '#f4f4f4',
-  },
-
-  dataHeaderAndCell: {
-    select: [
-      '.keysDetailsTable_dataHeader',
-      '.keysDetailsTable_dataCell',
-    ],
-
-    borderBottom: '1px solid #e8e8e8',
-    padding: '9px 15px',
-  },
-
-  dataHeader: {
-    select: '.keysDetailsTable_dataHeader',
-
-    width: '150px',
-
-    borderLeft: '1px solid #e8e8e8',
-
-    textAlign: 'left',
-
-    fontWeight: 'inherit',
-    textTransform: 'uppercase',
-
-    color: '#5e6469',
-    textShadow: 'white 0 1px 0',
-  },
-
-  dataCell: {
-    select: '.keysDetailsTable_dataCell',
-    borderRight: '1px solid #e8e8e8',
-  },
 };

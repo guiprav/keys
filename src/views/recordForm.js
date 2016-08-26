@@ -2,7 +2,7 @@ const Q = require('q');
 
 const { form, div } = require('keys/hh');
 
-exports = module.exports = async (
+module.exports = async (
   req,
   record = req.record,
 ) => {
@@ -20,11 +20,4 @@ exports = module.exports = async (
     content,
     div('.keysRecordForm_actions', actions),
   );
-};
-
-exports.styles = {
-  actionBtns: {
-    select: '.keysRecordForm_actions',
-    marginTop: '15px',
-  },
 };

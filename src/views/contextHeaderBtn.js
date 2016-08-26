@@ -1,6 +1,6 @@
 const { button } = require('keys/hh');
 
-exports = module.exports = async (req, type) => {
+module.exports = async (req, type) => {
   const { ctlName, ctl } = req;
 
   const btnAction = ctl.actions[type];
@@ -37,11 +37,4 @@ exports = module.exports = async (req, type) => {
   return button('.keysContextHeader_btn',
     attrs, await btnAction.views.heading(),
   );
-};
-
-exports.styles = {
-  btn: {
-    select: '.keysContextHeader_btn',
-    marginLeft: '15px',
-  },
 };

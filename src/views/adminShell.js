@@ -2,7 +2,7 @@ const Q = require('q');
 
 const { html, body } = require('keys/hh');
 
-exports = module.exports = async req => {
+module.exports = async req => {
   const { views } = req.action;
 
   const [
@@ -21,23 +21,9 @@ exports = module.exports = async req => {
     head,
     mainMenu,
 
-    body('.keysShell_body',
+    body('.keysAdminShell_body',
       contextHeader,
       contentWrapper,
     ),
   );
-};
-
-exports.styles = {
-  keysShell_body: {
-    flexDirection: 'column',
-
-    height: '100vh',
-    margin: 0,
-
-    overflow: 'auto',
-
-    fontFamily: ['Helvetica', 'sans-serif'],
-    fontSize: '11px',
-  },
 };

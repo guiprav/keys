@@ -1,6 +1,6 @@
 const { button } = require('keys/hh');
 
-exports = module.exports = (req, ...rest) =>
+module.exports = (req, ...rest) =>
   exports[req.actionName](req, ...rest);
 
 const saveBtn = attrs => button(

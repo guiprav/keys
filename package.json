@@ -4,7 +4,7 @@
   "author": "Guilherme Prá Vieira (super.driver.512@gmail.com)",
   "license": "AGPL-3.0+",
   "scripts": {
-    "build": "indexjs-generator src && babel src -d dist",
+    "build": "./build.sh",
     "prepublish": "npm run build"
   },
   "main": "dist/index.js",

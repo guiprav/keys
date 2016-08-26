@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static(`${__dirname}/../static`));
-
 const Keys = require('keys');
+
+app.use(express.static(`${__dirname}/../static`));
+app.use(express.static(Keys.staticDir));
 
 const ctls = require('sample/ctls');
 const views = require('sample/views');
