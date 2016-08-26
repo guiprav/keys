@@ -6,7 +6,7 @@ module.exports = async (req, type) => {
   const btnAction = ctl.actions[type];
 
   if (!btnAction || btnAction.hidden) {
-    return null;
+    return;
   }
 
   let attrs = {};
@@ -15,18 +15,17 @@ module.exports = async (req, type) => {
     case 'create':
     case 'edit':
       Object.assign(attrs, {
-        'data-href': {
+        'data-keys-href': {
           create: `/keys/${ctlName}/create`,
-          edit: `/keys/${ctlName}/edit?id=${req.query.id}`,
+          edit: `/keys/${ctlName}/edit/${req.data.id}`,
         }[type],
       });
       break;
 
     case 'delete':
       Object.assign(attrs, {
-        'data-keys-record-action': 'delete',
-        'data-keys-record-type': ctlName,
-        'data-keys-record-id': req.query.id,
+        'data-keys-method': 'post',
+        'data-keys-action': `/keys/${ctlName}/delete/${req.data.id}`,
       });
       break;
 
@@ -35,6 +34,6 @@ module.exports = async (req, type) => {
   }
 
   return button('.keysContextHeader_btn',
-    attrs, await btnAction.views.heading(),
+    attrs, await btnAction.views.heading(req, {}),
   );
 };

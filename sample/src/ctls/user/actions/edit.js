@@ -8,7 +8,8 @@ exports.prepare = async req =>
   req.record = await db.user.getSingle(req);
 
 exports.views = {
-  heading: (req, record = req.record) => record.name,
+  heading: (req, record = req.record) =>
+    record.name || 'Editar usuário',
 
   fieldSet: req => [
     'name',

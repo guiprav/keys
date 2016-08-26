@@ -1,21 +1,23 @@
+const Q = require('q');
+
 exports = module.exports = req => exports[req.actionName](req);
 
-exports.list = req => ([
-  req.action.views.contextHeaderBtn('create', req),
-]);
+exports.list = async req => [
+  await req.action.views.contextHeaderBtn(req, 'create'),
+];
 
 exports.create = () => [];
 
-exports.view = req => {
+exports.view = async req => {
   const { views } = req.action;
 
-  return [
-    views.contextHeaderBtn('create', req),
-    views.contextHeaderBtn('edit', req),
-    views.contextHeaderBtn('delete', req),
-  ];
+  return await Q.all([
+    views.contextHeaderBtn(req, 'create'),
+    views.contextHeaderBtn(req, 'edit'),
+    views.contextHeaderBtn(req, 'delete'),
+  ]);
 };
 
-exports.edit = req => [
-  req.action.views.contextHeaderBtn('delete', req),
+exports.edit = async req => [
+  await req.action.views.contextHeaderBtn(req, 'delete'),
 ];
