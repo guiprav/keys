@@ -20,7 +20,9 @@ module.exports = async (req, ctls, ctlName, actionName) => {
     ]),
   });
 
-  await action.prepare(req);
+  if (action.prepare) {
+    await action.prepare(req);
+  }
 
   const page = await action.views.render(req);
 

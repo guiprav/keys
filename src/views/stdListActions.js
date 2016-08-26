@@ -7,15 +7,16 @@ module.exports = (req, record, ctlName) => {
 
   const stdBtns = {
     view: button(stdBtnSel, 'Ver', {
-      'data-keys-href': `/keys/${ctlName}/view`,
+      'data-keys-href': `/keys/${ctlName}/view/${record.id}`,
     }),
 
     edit: button(stdBtnSel, 'Editar', {
-      'data-keys-href': `/keys/${ctlName}/edit`,
+      'data-keys-href': `/keys/${ctlName}/edit/${record.id}`,
     }),
 
     delete: button(stdBtnSel, 'Deletar', {
-      'data-keys-href': `/keys/${ctlName}/delete`,
+      'data-keys-method': 'post',
+      'data-keys-action': `/keys/${ctlName}/delete/${record.id}`,
     }),
   };
 

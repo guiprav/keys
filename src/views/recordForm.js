@@ -6,14 +6,14 @@ module.exports = async (
   req,
   record = req.record,
 ) => {
-  const { action } = req;
+  const { views } = req.action;
 
   const [
     content,
     actions,
   ] = await Q.all([
-    action.recordFormContent(req, record),
-    action.recordFormActions(req, record),
+    views.recordFormContent(req, record),
+    views.recordFormActions(req, record),
   ]);
 
   return form('.keysRecordForm', { method: 'post' },

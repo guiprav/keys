@@ -7,9 +7,6 @@ app.use(express.static(`${__dirname}/../static`));
 app.use(express.static(Keys.staticDir));
 
 const ctls = require('sample/ctls');
-const views = require('sample/views');
-
-Keys.init(ctls, views);
 
 {
   async function getHandler (req, res) {

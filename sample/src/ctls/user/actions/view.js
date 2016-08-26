@@ -2,7 +2,7 @@ const R = require('ramda');
 
 const db = require('sample/db');
 
-const listAction = require('./list');
+const fieldSpecs = require('../fieldSpecs');
 
 exports.prepare = async req =>
   req.record = await db.user.getSingle(req);
@@ -10,5 +10,12 @@ exports.prepare = async req =>
 exports.views = {
   heading: (req, record = req.record) => record.name,
 
-  fieldSet: listAction.views.fieldSet,
+  fieldSet: req => [
+    'name',
+    'adminAccess',
+    'active',
+  ].map(name => {
+    const spec = fieldSpecs[name];
+    return spec.view;
+  }),
 };
