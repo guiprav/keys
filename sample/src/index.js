@@ -20,7 +20,7 @@ const ctls = require('sample/ctls');
         return;
       }
 
-      res.send(await Keys.render(req, ctls, ctlName, actionName));
+      await Keys.render(req, res, ctls, ctlName, actionName);
     }
     catch(err) {
       // TODO: Log, check for user-friendly messages, set flash?

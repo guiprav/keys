@@ -6,7 +6,11 @@ module.exports = async (req, res, ctls, ctlName, actionName) => {
   const { action } = req;
 
   if (action.prepare) {
-    await action.prepare(req);
+    await action.prepare(req, res);
+
+    if (res.headersSent) {
+      return;
+    }
   }
 
   const result = await action.submit(req, res);
