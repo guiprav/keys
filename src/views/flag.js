@@ -1,1 +1,1 @@
-module.exports = val => (val ? 'Sim' : 'Não');
+module.exports = (req, val) => (val ? 'Sim' : 'Não');

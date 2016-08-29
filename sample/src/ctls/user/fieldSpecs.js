@@ -31,8 +31,9 @@ exports.adminAccess = {
   view: {
     label: () => 'Administrador?',
 
-    data: (req, record = {}) =>
-      req.action.views.flag(record.adminAccess),
+    data: (req, record = {}) => req.action.views.flag(
+      req, record.adminAccess,
+    ),
   },
 
   edit: {
@@ -49,7 +50,10 @@ exports.adminAccess = {
 exports.active = {
   view: {
     label: () => 'Ativo?',
-    data: (req, record = {}) => req.action.views.flag(record.active),
+
+    data: (req, record = {}) => req.action.views.flag(
+      req, record.active,
+    ),
   },
 
   edit: {

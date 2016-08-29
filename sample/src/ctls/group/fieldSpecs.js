@@ -30,7 +30,7 @@ exports.name = {
 exports.active = {
   view: {
     label: () => 'Ativo?',
-    data: (req, record = {}) => views.flag(record.active),
+    data: (req, record = {}) => views.flag(req, record.active),
   },
 
   edit: {
