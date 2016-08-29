@@ -38,7 +38,7 @@ module.exports = opt => $.ajax(Object.assign(
     error: xhr => {
       const data = xhr.responseJSON;
 
-      if (!data || !data.err) {
+      if (!data || !data.userMsg) {
         Keys.flagServerError();
         return;
       }
