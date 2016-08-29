@@ -10,7 +10,7 @@ module.exports = () => form('.keysAjaxForm.keysSignInBox',
   }),
 
   input('.keysSignInBox_passwordInput', {
-    type: 'text',
+    type: 'password',
     name: 'password',
     placeholder: 'Senha',
   }),
