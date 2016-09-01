@@ -43,6 +43,10 @@ module.exports = opt => $.ajax(Object.assign(
       if (opt.success) {
         opt.success(data);
       }
+
+      if (opt.always) {
+        opt.always(data);
+      }
     },
 
     error: xhr => {
@@ -57,6 +61,10 @@ module.exports = opt => $.ajax(Object.assign(
 
       if (opt.error) {
         opt.error(data, xhr);
+      }
+
+      if (opt.always) {
+        opt.always(data);
       }
     },
   }
