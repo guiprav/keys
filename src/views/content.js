@@ -1,6 +1,11 @@
+const Q = require('q');
+
 exports = module.exports = req => exports[req.actionName](req);
 
-exports.list = req => req.action.views.listTable(req);
+exports.list = req => Q.all([
+  req.action.views.listScopes(req),
+  req.action.views.listTable(req),
+]);
 
 exports.view = req => req.action.views.detailsTable(req);
 
