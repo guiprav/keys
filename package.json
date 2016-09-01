@@ -36,6 +36,7 @@
     "hyperscript": "^1.4.7",
     "hyperscript-helpers": "^3.0.0",
     "jquery": "^3.1.0",
+    "lodash": "^4.15.0",
     "moment": "^2.14.1",
     "qhell": "github:n2liquid/qhell",
     "ramda": "^0.22.0"
