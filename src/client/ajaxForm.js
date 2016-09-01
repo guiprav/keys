@@ -24,6 +24,8 @@ $(() => {
     });
 
     Keys.stdAjax({
+      redirect: 'follow',
+
       url: $form.attr('action') ||
         `${location.pathname}${location.search}`,
 

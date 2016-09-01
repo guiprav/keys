@@ -13,7 +13,7 @@ module.exports = opt => $.ajax(Object.assign(
     success: data => {
       const { redirect } = opt;
 
-      switch (redirect || 'follow') {
+      switch (redirect || 'auto') {
         case 'ignore':
           break;
 
@@ -29,9 +29,19 @@ module.exports = opt => $.ajax(Object.assign(
             return;
           }
 
-          location.href = data.redirect;
+        case 'auto':
+          if (data.redirect) {
+            location.href = data.redirect;
+          }
 
           break;
+
+        default:
+          throw new Error(`Unknown redirect policy: ${redirect}`);
+      }
+
+      if (opt.success) {
+        opt.success(data);
       }
     },
 
@@ -44,6 +54,10 @@ module.exports = opt => $.ajax(Object.assign(
       }
 
       Keys.pushAlert('red', data.userMsg);
+
+      if (opt.error) {
+        opt.error(data, xhr);
+      }
     },
   }
 ));
