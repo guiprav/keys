@@ -8,7 +8,7 @@ $(() => {
   $('body').on('submit', '.keysAjaxForm', ev => {
     ev.preventDefault();
 
-    const $form = $(ev.target).clone();
+    const $form = $(ev.target);
     const $formClone = $form.clone();
 
     $formClone.find('[type="checkbox"]:not(:checked)').each(function () {
