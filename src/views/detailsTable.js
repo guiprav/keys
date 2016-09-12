@@ -8,7 +8,7 @@ module.exports = async (
   fieldSet = req.action.views.fieldSet(req, record),
 ) => {
   const fieldRows = await Qh.deepWhen(fieldSet.map(field => ({
-    label: field.label(req, record),
+    label: field.label && field.label(req, record),
     data: field.data(req, record),
   })));
 
