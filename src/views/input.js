@@ -1,5 +1,7 @@
 const R = require('ramda');
 
+const moment = require('moment');
+
 const { input, textarea } = require('keys/dist/hh');
 
 exports =
@@ -14,6 +16,24 @@ module.exports = (req, opt) => {
   }
 
   return input(selector || {}, R.omit(['selector'], opt));
+};
+
+exports.date = (req, opt) => {
+  const {
+    selector,
+  } = opt;
+
+  let value = '';
+
+  if (opt.value) {
+    value = moment.utc(opt.value).format('Y-MM-DD');
+  }
+
+  return input(
+    selector || {},
+    R.omit(['selector', 'value'], opt),
+    { value },
+  );
 };
 
 exports.textarea = (req, opt) => {
