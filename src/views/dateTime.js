@@ -5,5 +5,5 @@ module.exports = (req, ts, fmt = 'lll') => {
     return 'N/A';
   }
 
-  return moment(ts).format(fmt);
+  return moment.utc(ts).format(fmt);
 };
