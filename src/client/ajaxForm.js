@@ -23,6 +23,8 @@ $(() => {
       $(this).val(uncheckedValue).prop('checked', true);
     });
 
+    $formClone.find('[type="checkbox"]:disabled').prop('disabled', false);
+
     Keys.stdAjax({
       redirect: 'follow',
 
