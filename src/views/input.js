@@ -65,7 +65,7 @@ exports.checkbox = (req, opt) => {
   }
 
   if (value === undefined || value === null) {
-    value = 1;
+    value = true;
   }
 
   return input(

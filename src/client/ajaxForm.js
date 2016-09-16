@@ -17,7 +17,7 @@ $(() => {
       let uncheckedValue = $this.attr('data-keys-unchecked-value');
 
       if (uncheckedValue === undefined) {
-        uncheckedValue = 0;
+        uncheckedValue = false;
       }
 
       $(this).val(uncheckedValue).prop('checked', true);
