@@ -1,6 +1,8 @@
 .keysMainMenu {
   display: flex;
 
+  align-items: center;
+
   border-bottom: 1px solid #44484b;
   padding: 0 30px;
 
@@ -21,6 +23,8 @@
 
   font-size: inherit;
   font-weight: inherit;
+
+  white-space: nowrap;
 }
 
 .keysMainMenu_sections {
@@ -34,6 +38,8 @@
 
 .keysMainMenu_list {
   display: flex;
+
+  flex-wrap: wrap;
 
   margin: 0;
   padding-left: 0;
