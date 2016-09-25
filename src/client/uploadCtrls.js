@@ -68,15 +68,7 @@ $(() => {
       }
     }
 
-    $fileInput.on('change', changeEv => {
-      const files = changeEv.target.files;
-
-      if (!files.length) {
-        return;
-      }
-
-      const file = files[0];
-
+    function upload(file) {
       const xhr = new XMLHttpRequest();
 
       $input.val('');
@@ -123,6 +115,22 @@ $(() => {
         data.append('file', file);
 
         xhr.send(data);
+      }
+    }
+
+    $fileInput.on('change', changeEv => {
+      const files = changeEv.target.files;
+
+      if (!files.length) {
+        return;
+      }
+
+      const file = files[0];
+
+      if (!Keys.fileUploadFilter) {
+        upload(file);
+      } else {
+        Keys.fileUploadFilter($ctrls, file, upload);
       }
     });
 
