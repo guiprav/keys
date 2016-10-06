@@ -23,7 +23,7 @@ $(() => {
     Keys.stdAjax({
       type: $btn.attr('data-keys-method'),
       url: $btn.attr('data-keys-action'),
-      redirect: $btn.attr('data-keys-redirect') || 'follow',
+      redirect: $btn.attr('data-keys-redirect'),
       dataType: $btn.attr('data-keys-params-data-type'),
       data,
     });
