@@ -40,6 +40,12 @@ module.exports = opt => $.ajax(Object.assign(
           throw new Error(`Unknown redirect policy: ${redirect}`);
       }
 
+      if (data.pushAlert) {
+        const { color, message } = data.pushAlert;
+
+        Keys.pushAlert(color || 'blue', message);
+      }
+
       if (opt.success) {
         opt.success(data);
       }
